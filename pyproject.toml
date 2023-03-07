@@ -10,6 +10,8 @@ repository= "https://github.com/Taek-Lee00/testing"
 #main dependency group
 [tool.poetry.dependencies]
 python = ">=3.10, <3.12"
+
+#webframework
 fastapi = "^0.92.0"
 uvicorn = {extras = ["standard"], version = "^0.20.0"}
 
