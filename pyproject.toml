@@ -25,6 +25,7 @@ isort = "^5.12.0"
 pytest-mock = "^3.10.0"
 httpx = "^0.23.3"
 requests = "^2.28.2"
+coverage = "^7.2.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -47,3 +48,11 @@ multi_line_output = 3
 line_length = 120
 include_trailing_comma = true
 extend_skip = ["migrations", ".gitignore"]
+
+[tool.coverage.run]
+#disable_warnings = ['no-data-collected']
+#source = ["chart_service"]
+omit = [
+    "*/tests/*",
+    "*/__main__.py",
+]

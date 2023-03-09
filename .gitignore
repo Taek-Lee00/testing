@@ -4,3 +4,13 @@ __pycache__/
 # Environmments
 .venv/
 
+
+#Unit test / Coverage reports
+htmlcov/
+.coverage
+.cache
+
+
+# mac os
+.DS_Store
+
