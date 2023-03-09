@@ -15,6 +15,9 @@ install-dev:
 # compile:
 # 	@poetry run python -m compileall $(APP_NAME)
 
+run: 
+	@poetry run uvicorn hello_world.main:app --reload
+
 format:
 	@poetry run isort .
 	@poetry run black .
