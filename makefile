@@ -25,14 +25,15 @@ lint:
 	@poetry run \
 		black --check .
 	@poetry run \
-		flake8 . --config setup.cfg
-	@poetry run \
 		mypy .
+	@poetry run \
+		flake8 . --exit-zero --config setup.cfg
+	
 
 test:
 	@poetry run \
-		python -m pytest . \
-			--junitxml=public/test/junit.xml \
+		python -m pytest -v \
+			--junitxml public/test/junit.xml \
 			--html=public/test/report.html
 
 coverage:

@@ -3,7 +3,6 @@ import sys
 from multiprocessing import Process
 
 import pytest
-import requests
 import uvicorn
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
@@ -18,24 +17,22 @@ from hello_world.main import app
 #     run.run()
 #     run_mock.assert_called()
 
+
 def run_server():
-    uvicorn.run(app, host= "127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
+
 
 @pytest.fixture
 def server():
     proc = Process(target=run_server, args=(), daemon=True)
-    proc.start() 
+    proc.start()
     yield proc
-    proc.kill() # Cleanup after test
+    proc.kill()  # Cleanup after test
 
 
 def test_read_main():
-    #uvicorn.run("main:app", host = "0.0.0.0", port=8000)
+    # uvicorn.run("main:app", host = "0.0.0.0", port=8000)
     client = TestClient(app)
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"msg": "Hello, World!"}
-
-
-
-
