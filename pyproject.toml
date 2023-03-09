@@ -53,7 +53,6 @@ multi_line_output = 3
 line_length = 120
 include_trailing_comma = true
 extend_skip = ["migrations", ".gitignore"]
-<<<<<<< HEAD
 
 [tool.coverage.run]
 #disable_warnings = ['no-data-collected']
@@ -81,5 +80,3 @@ directory = "public/coverage"
 #     "venv",
 #     "alembic"
 # ]
-=======
->>>>>>> 893ef666b376b683ed077ee39a01df34a6cb21df
