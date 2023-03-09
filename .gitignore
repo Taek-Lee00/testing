@@ -3,6 +3,8 @@ __pycache__/
 
 # Environmments
 .venv/
+.git/
+.github/
 
 
 #Unit test / Coverage reports
