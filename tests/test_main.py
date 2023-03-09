@@ -1,16 +1,16 @@
-import sys
 import os
+import sys
+from multiprocessing import Process
 
 import pytest
-from pytest_mock import MockerFixture
+import requests
+import uvicorn
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-import uvicorn
+from pytest_mock import MockerFixture
+
 from hello_world import main, run
 from hello_world.main import app
-from multiprocessing import Process
-import requests
-
 
 # def test_app(mocker: MockerFixture) -> None:
 #     run_mock = mocker.patch("uvicorn.run")
