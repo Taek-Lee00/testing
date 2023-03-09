@@ -11,8 +11,7 @@ install:
 	@poetry install --only main --no-root
 
 install-dev:
-	@poetry install --no-root --group dev
-
+	@poetry install --no-root
 # compile:
 # 	@poetry run python -m compileall $(APP_NAME)
 
