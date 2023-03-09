@@ -40,9 +40,13 @@ jobs:
       run: |
         make test
 
-    - name: Test with pytest
+    - name: Converage
       run: |
         make coverage
         poetry run coverage xml
         poetry run coverage html
     
+    - name: make badge
+      run: |
+        make badge
+        
