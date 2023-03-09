@@ -57,3 +57,22 @@ omit = [
     "*/tests/*",
     "*/__main__.py",
 ]
+
+[tool.coverage.xml]
+output = "public/coverage/coverage.xml"
+
+[tool.coverage.html]
+directory = "public/coverage"
+
+# [tool.mypy]
+# plugins = ["sqlalchemy.ext.mypy.plugin"]
+# check_untyped_defs = true
+# warn_redundant_casts = true
+# warn_unreachable = true
+# warn_return_any = true
+# warn_unused_configs = true
+# exclude = [
+#     ".venv",
+#     "venv",
+#     "alembic"
+# ]
