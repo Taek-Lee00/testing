@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from pytest_mock import MockerFixture
 
-from hello_world import main, run
+from hello_world import main
 from hello_world.main import app
 
 # def test_app(mocker: MockerFixture) -> None:
