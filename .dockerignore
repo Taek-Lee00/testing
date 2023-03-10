@@ -1,0 +1,29 @@
+# Python
+.pytest_cache
+__pycache__/
+venv
+.venv
+
+# Docs
+reports/
+
+# Test
+tests/
+pytest.ini
+.coverage
+htmlcov/
+
+# Misc
+*.md
+README.md
+setup.cfg
+.git*
+.env
+.editorconfig
+.dockerignore
+docker/
+!docker/nginx/nginx.conf
+
+# Editor directories
+.idea
+.vscode

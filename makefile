@@ -5,6 +5,12 @@
 	docker docker-push \
 	run collector celery \
 
+PROJECT_NAME ?= $(shell sed -n 's/^name = "\(.*\)"/\1/p' pyproject.toml)
+APP_NAME ?= "hello_world"
+DOCKER_APP_IMAGE_TAG ?= "$(PROJECT_NAME)"
+
+
+
 default: all
 
 install:
@@ -16,7 +22,7 @@ install-dev:
 # 	@poetry run python -m compileall $(APP_NAME)
 
 run: 
-	@poetry run uvicorn hello_world.main:app --reload
+	@poetry run python -m $(APP_NAME)
 
 format:
 	@poetry run isort .
@@ -52,7 +58,15 @@ badge:
 		genbadge coverage \
 		--input-file public/coverage/coverage.xml \
 		--output-file public/coverage.svg
-	
+
+docker: 
+	@docker build \
+		-f docker/Dockerfile \
+		--pull \
+		-t "$(DOCKER_APP_IMAGE_TAG)" .
+
+
+
 # @VERSION=$(shell poetry run python -m $(APP_NAME) docs --version); \
 # poetry run \
 # 	anybadge \
@@ -70,7 +84,7 @@ badge:
 # collect:
 # 	@poetry run python -m $(APP_NAME) collect
 
-# all: install-dev test
+all: install-dev test
 
 # check-ta-lib:
 # ifeq ($(shell ls ta-lib 2>/dev/null),)
