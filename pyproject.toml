@@ -63,10 +63,10 @@ omit = [
 ]
 
 [tool.coverage.xml]
-output = "public/coverage/coverage.xml"
+output = "docs/coverage/coverage.xml"
 
 [tool.coverage.html]
-directory = "public/coverage"
+directory = "docs/coverage"
 
 [tool.mypy]
 # plugins = ["sqlalchemy.ext.mypy.plugin"]

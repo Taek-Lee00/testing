@@ -42,8 +42,8 @@ lint:
 test:
 	@poetry run \
 		python -m pytest -v \
-			--junitxml public/test/junit.xml \
-			--html=public/test/report.html
+			--junitxml docs/test/junit.xml \
+			--html=docs/test/report.html
 
 coverage:
 	@poetry run coverage run -m pytest
@@ -52,12 +52,12 @@ coverage:
 badge:
 	@poetry run \
 		genbadge tests \
-		--input-file public/test/junit.xml \
-		--output-file public/tests.svg
+		--input-file docs/test/junit.xml \
+		--output-file docs/tests.svg
 	@poetry run \
 		genbadge coverage \
-		--input-file public/coverage/coverage.xml \
-		--output-file public/coverage.svg
+		--input-file docs/coverage/coverage.xml \
+		--output-file docs/coverage.svg
 
 docker: 
 	@docker build \
