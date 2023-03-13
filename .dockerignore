@@ -15,7 +15,6 @@ htmlcov/
 
 # Misc
 *.md
-README.md
 setup.cfg
 .git*
 .env

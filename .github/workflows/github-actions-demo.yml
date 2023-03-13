@@ -14,7 +14,6 @@ permissions:
 
 jobs:
   build:
-  
     runs-on: ubuntu-latest
 
     steps:
@@ -31,22 +30,46 @@ jobs:
         pip install poetry
         poetry config virtualenvs.in-project true
         make install-dev
-        
+  
+  lint:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Lint with flake8
       run: |
         make lint
 
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
     - name: Test with pytest
       run: |
         make test
 
-    - name: Converage
+  coverage:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    - name: coverage
       run: |
         make coverage
         poetry run coverage xml
         poetry run coverage html
-    
+
+  badge:
+    runs-on: ubuntu-latest
+    needs: coverage
+    steps:
     - name: make badge
       run: |
         make badge
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: badge
+    steps:
+    - name: make docker
+      run: |
+        make docker
         

@@ -9,21 +9,22 @@ RUN apt-get update -y && \
     apt-get clean -y && \
     apt-get autoremove -y
 
+#cache, not use package delete
 
 ENV VIRTUAL_ENV="$APP_PATH/venv"
 RUN python3.10 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-RUN python3.10 -m pip install --upgrade pip
+RUN python -m pip install --upgrade pip
 RUN pip install poetry
 
 COPY . $APP_PATH
 RUN cd $APP_PATH \
     make && \
     make install && \
-    python -m compileall $APP_PATH/hello_wormald  
+    python -m compileall $APP_PATH/hello_world  
 
 
-# Run server
+# Run server : convention
 EXPOSE 8000
 # ["make", "run"] makes it not able to recieve Ctrl+C signal from console.
 #ENTRYPOINT ["poetry", "show","--why"]
