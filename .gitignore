@@ -10,7 +10,7 @@ __pycache__/
 htmlcov/
 .coverage
 .cache
-
+tests/
 
 # mac os
 .DS_Store
