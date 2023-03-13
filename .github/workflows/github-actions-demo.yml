@@ -13,7 +13,8 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  
+  check-source:
     runs-on: ubuntu-latest
 
     steps:
@@ -49,7 +50,12 @@ jobs:
       run: |
         make badge
 
-    - name: make docker
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build-docker
       run: |
         make docker
 
