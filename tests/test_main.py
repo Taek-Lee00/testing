@@ -6,10 +6,10 @@ import pytest
 import uvicorn
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from pytest_mock import MockerFixture
 
 from hello_world import main
 from hello_world.main import app
+from tests.conftest import Foo, EnvValue, EnvValueA, EnvValueB
 
 # def test_app(mocker: MockerFixture) -> None:
 #     run_mock = mocker.patch("uvicorn.run")
@@ -30,9 +30,26 @@ def server():
     proc.kill()  # Cleanup after test
 
 
-def test_read_main():
-    # uvicorn.run("main:app", host = "0.0.0.0", port=8000)
+def test_read_main(change):
     client = TestClient(app)
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"msg": "Hello, World!"}
+    assert response.json() == {"msg": f"""hello, {change} """}
+
+    client2 = TestClient(app)
+    response = client2.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"msg": f"""hello, {change} """}
+
+
+def test_read_main2(env_val: Foo):
+    client = TestClient(app)
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"msg": f"""hello, {env_val.set_EnvValue()} """}
+
+    env_val.envValue = EnvValueA()
+    client2 = TestClient(app)
+    response = client2.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"msg": f"""hello, {env_val.set_EnvValue()} """}

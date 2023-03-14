@@ -1,3 +1,4 @@
+import os
 from typing import Union
 
 import uvicorn
@@ -6,9 +7,14 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
+# @app.get("/")
+# def read_root():
+#     return {"msg": f"""hello, {os.environ['FOO']} """}
+
+
 @app.get("/")
 def read_root():
-    return {"msg": "Hello, World!"}
+    return {"msg": f"""hello, {"world"} """}
 
 
 @app.get("/items/{item_id}")
