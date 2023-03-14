@@ -34,10 +34,9 @@ lint:
 	@poetry run \
 		black --check .
 	@poetry run \
-		mypy .
-	@poetry run \
 		flake8 . --exit-zero --config setup.cfg
-	
+	@poetry run \
+		mypy .
 
 test:
 	@poetry run \
