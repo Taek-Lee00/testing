@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 
 from hello_world import main
 from hello_world.main import app
-from tests.conftest import Foo, EnvValue, EnvValueA, EnvValueB
+from tests.conftest import EnvValue, EnvValueA, EnvValueB, Foo
 
 # def test_app(mocker: MockerFixture) -> None:
 #     run_mock = mocker.patch("uvicorn.run")
@@ -42,7 +42,7 @@ def test_read_main(change):
     assert response.json() == {"msg": f"""hello, {change} """}
 
 
-def test_read_main2(env_val: Foo):
+def test_read_main_stratey(env_val: Foo):
     client = TestClient(app)
     response = client.get("/")
     assert response.status_code == 200
