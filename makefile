@@ -26,7 +26,7 @@ run:
 
 format:
 	@poetry run isort .
-	@poetry run black .
+	@poetry run black . 
 
 lint:
 	@poetry run \
