@@ -4,6 +4,7 @@ __pycache__/
 # Environmments
 .venv/
 .git/
+.vscode/
 
 
 #Unit test / Coverage reports
