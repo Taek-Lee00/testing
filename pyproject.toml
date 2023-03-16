@@ -15,6 +15,10 @@ python = ">=3.10, <3.12"
 fastapi = "^0.92.0"
 uvicorn = {extras = ["standard"], version = "^0.20.0"}
 python-dotenv = {version = "^1.0.0", python = "3.10"}
+sqlalchemy = {extras = ["mypy"], version = "^2.0.6"}
+sqlalchemy-utils = "^0.40.0"
+psycopg2-binary = "^2.9.5"
+psycopg2 = "^2.9.5"
 
 
 
@@ -43,6 +47,8 @@ exclue = '''
 | \.mypy_cache
 | \.venv
 | __pycache__\
+| \__pycache__
+| __init__.py
 )/
 '''
 
@@ -51,7 +57,7 @@ profile = "black"
 multi_line_output = 3
 line_length = 120
 include_trailing_comma = true
-extend_skip = ["migrations", ".gitignore"]
+extend_skip = ["migrations", ".gitignore", ".git", ".venv", "__pychache__"]
 
 [tool.coverage.run]
 #disable_warnings = ['no-data-collected']
@@ -70,12 +76,11 @@ output = "docs/coverage/coverage.xml"
 directory = "docs/coverage"
 
 [tool.mypy]
-# plugins = ["sqlalchemy.ext.mypy.plugin"]
-# check_untyped_defs = true
-# warn_redundant_casts = true
-# warn_unreachable = true
-# warn_return_any = true
-# warn_unused_configs = true
+check_untyped_defs = true
+warn_redundant_casts = true
+warn_unreachable = true
+warn_return_any = true
+warn_unused_configs = true
 exclude = [
     ".venv",
     "venv",
@@ -83,5 +88,10 @@ exclude = [
     "__pycache__",
     ".git",
     ".github",
-    "public/"
+    "public/",
+    ".pytest_cache",
+    "tests",
+    "conftest.py",
+    ".env",
+    "database"
 ]
