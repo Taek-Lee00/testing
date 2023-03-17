@@ -12,6 +12,10 @@ htmlcov/
 .coverage
 .cache
 
+#db
+database/
+test_db.py
+
 
 # mac os
 .DS_Store
