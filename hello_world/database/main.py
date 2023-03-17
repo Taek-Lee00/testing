@@ -9,7 +9,7 @@ from hello_world.database.setting import Database
 # from sqlalchemy.sql.base import ImmutableColumnCollection
 
 
-def main():
+def main(db: Database = None):
     db = Database(user="t_user", password="", host="localhost", db_name="postgres")
 
     if not database_exists(db.engine.url):
@@ -19,7 +19,7 @@ def main():
     return Session()
 
 
-def data_insert(session, data):
+def data_insert(session, data=None):
     # table: Table = Test.__table__
     # column: ImmutableColumnCollection = table.c
 
